@@ -5,6 +5,8 @@ import (
 	"log"
 	"os"
 
+	"github.com/pobek/wiki-scrape/api"
+
 	"github.com/urfave/cli"
 )
 
@@ -13,13 +15,18 @@ func main() {
 	app.Name = "WikiScrape"
 	app.Usage = "Will scrape wikipedia for knowledge"
 
-	app.Flags = []cli.Flag{
-		cli.BoolFlag{
-			Name: "verbose",
+	app.Commands = []cli.Command{
+		{
+			Name:   "print",
+			Usage:  "Prints 'Hello `Name`'",
+			Action: testOutput,
+		},
+		{
+			Name:   "api",
+			Usage:  "Trigger API call",
+			Action: api.Mock,
 		},
 	}
-
-	app.Action = testOutput
 
 	err := app.Run(os.Args)
 	if err != nil {
@@ -31,10 +38,6 @@ func testOutput(c *cli.Context) error {
 	name := "Marco"
 	if c.NArg() > 0 {
 		name = c.Args().Get(0)
-	}
-	if c.Bool("verbose") {
-		fmt.Println("Verbose enabled!")
-		fmt.Println("Will output hello <name>")
 	}
 	fmt.Printf("Hello %s", name)
 	return nil

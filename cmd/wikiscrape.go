@@ -27,10 +27,10 @@ func main() {
 					},
 				},
 				{
-					Name:  "docx",
-					Usage: "Generates a Word document",
+					Name:  "html",
+					Usage: "Generates a HTML document",
 					Action: func(c *cli.Context) error {
-						fmt.Println("Generating Word document")
+						fmt.Println("Generating HTML document")
 						return nil
 					},
 				},
@@ -39,6 +39,14 @@ func main() {
 					Usage: "Generates a PDF document",
 					Action: func(c *cli.Context) error {
 						fmt.Println("Generating PDF document")
+						return nil
+					},
+				},
+				{
+					Name:  "markdown",
+					Usage: "Generates a Markdown document",
+					Action: func(c *cli.Context) error {
+						fmt.Println("Generating Markdown document")
 						return nil
 					},
 				},

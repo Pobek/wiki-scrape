@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/pobek/wiki-scrape/api"
 	"github.com/urfave/cli"
 )
 
@@ -35,12 +36,9 @@ func main() {
 					},
 				},
 				{
-					Name:  "pdf",
-					Usage: "Generates a PDF document",
-					Action: func(c *cli.Context) error {
-						fmt.Println("Generating PDF document")
-						return nil
-					},
+					Name:   "pdf",
+					Usage:  "Generates a PDF document",
+					Action: api.ParseWiki,
 				},
 				{
 					Name:  "markdown",
